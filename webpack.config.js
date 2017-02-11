@@ -23,8 +23,9 @@ const PORT = 3000;
 //  LOADERS
 //---------------------------------------------------------
 const loaders = {
-  js: {test: /\.js$/, exclude: /node_modules/, loader: 'babel'},
-  scss: {test: /\.scss$/, loader: 'style!css!postcss!sass'}
+    js: { test: /\.js$/, exclude: /node_modules/, loader: 'babel' },
+    scss: { test: /\.scss$/, loader: 'style!css!postcss!sass' },
+    fonts: { test: /\.eot|\.ttf|\.svg|\.woff2?/, loader: 'file?name=[name].[ext]' }
 };
 
 
@@ -36,25 +37,25 @@ module.exports = config;
 
 
 config.resolve = {
-  extensions: ['', '.js'],
-  modulesDirectories: ['node_modules'],
-  root: path.resolve('.')
+    extensions: ['', '.js'],
+    modulesDirectories: ['node_modules'],
+    root: path.resolve('.')
 };
 
 config.plugins = [
-  new webpack.DefinePlugin({
-    'process.env.NODE_ENV': JSON.stringify(NODE_ENV)
-  })
+    new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify(NODE_ENV)
+    })
 ];
 
 config.postcss = [
-  autoprefixer({ browsers: ['last 3 versions'] })
+    autoprefixer({ browsers: ['last 3 versions'] })
 ];
 
 config.sassLoader = {
-  outputStyle: 'compressed',
-  precision: 10,
-  sourceComments: false
+    outputStyle: 'compressed',
+    precision: 10,
+    sourceComments: false
 };
 
 
@@ -62,25 +63,25 @@ config.sassLoader = {
 //  DEVELOPMENT or PRODUCTION
 //-------------------------------------
 if (ENV_DEVELOPMENT || ENV_PRODUCTION) {
-  config.entry = {
-    main: ['./src/main.js']
-  };
+    config.entry = {
+        main: ['./src/main.js']
+    };
 
-  config.output = {
-    filename: '[name].js',
-    path: path.resolve('./target'),
-    publicPath: '/'
-  };
+    config.output = {
+        filename: '[name].js',
+        path: path.resolve('./target'),
+        publicPath: '/'
+    };
 
-  config.plugins.push(
-    new HtmlWebpackPlugin({
-      chunkSortMode: 'dependency',
-      filename: 'index.html',
-      hash: false,
-      inject: 'body',
-      template: './src/index.html'
-    })
-  );
+    config.plugins.push(
+        new HtmlWebpackPlugin({
+            chunkSortMode: 'dependency',
+            filename: 'index.html',
+            hash: false,
+            inject: 'body',
+            template: './src/index.html'
+        })
+    );
 }
 
 
@@ -88,45 +89,46 @@ if (ENV_DEVELOPMENT || ENV_PRODUCTION) {
 //  DEVELOPMENT
 //-------------------------------------
 if (ENV_DEVELOPMENT) {
-  config.devtool = 'cheap-module-source-map';
+    config.devtool = 'cheap-module-source-map';
 
-  config.entry.main.unshift(
-    `webpack-dev-server/client?http://${HOST}:${PORT}`,
-    'webpack/hot/only-dev-server',
-    'react-hot-loader/patch',
-    'babel-polyfill'
-  );
+    config.entry.main.unshift(
+        `webpack-dev-server/client?http://${HOST}:${PORT}`,
+        'webpack/hot/only-dev-server',
+        'react-hot-loader/patch',
+        'babel-polyfill'
+    );
 
-  config.module = {
-    loaders: [
-      loaders.js,
-      loaders.scss
-    ]
-  };
+    config.module = {
+        loaders: [
+            loaders.js,
+            loaders.scss,
+            loaders.fonts
+        ]
+    };
 
-  config.plugins.push(
-    new webpack.HotModuleReplacementPlugin()
-  );
+    config.plugins.push(
+        new webpack.HotModuleReplacementPlugin()
+    );
 
-  config.devServer = {
-    contentBase: './src',
-    historyApiFallback: true,
-    host: HOST,
-    hot: true,
-    port: PORT,
-    publicPath: config.output.publicPath,
-    stats: {
-      cached: true,
-      cachedAssets: true,
-      chunks: true,
-      chunkModules: false,
-      colors: true,
-      hash: false,
-      reasons: true,
-      timings: true,
-      version: false
-    }
-  };
+    config.devServer = {
+        contentBase: './src',
+        historyApiFallback: true,
+        host: HOST,
+        hot: true,
+        port: PORT,
+        publicPath: config.output.publicPath,
+        stats: {
+            cached: true,
+            cachedAssets: true,
+            chunks: true,
+            chunkModules: false,
+            colors: true,
+            hash: false,
+            reasons: true,
+            timings: true,
+            version: false
+        }
+    };
 }
 
 
@@ -134,37 +136,37 @@ if (ENV_DEVELOPMENT) {
 //  PRODUCTION
 //-------------------------------------
 if (ENV_PRODUCTION) {
-  config.devtool = 'source-map';
+    config.devtool = 'source-map';
 
-  config.entry.vendor = './src/vendor.js';
+    config.entry.vendor = './src/vendor.js';
 
-  config.output.filename = '[name].[chunkhash].js';
+    config.output.filename = '[name].[chunkhash].js';
 
-  config.module = {
-    loaders: [
-      loaders.js,
-      {test: /\.scss$/, loader: ExtractTextPlugin.extract('css?-autoprefixer!postcss!sass')}
-    ]
-  };
+    config.module = {
+        loaders: [
+            loaders.js,
+            { test: /\.scss$/, loader: ExtractTextPlugin.extract('css?-autoprefixer!postcss!sass') }
+        ]
+    };
 
-  config.plugins.push(
-    new WebpackMd5Hash(),
-    new ExtractTextPlugin('styles.[contenthash].css'),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: Infinity
-    }),
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      mangle: true,
-      compress: {
-        dead_code: true, // eslint-disable-line camelcase
-        screw_ie8: true, // eslint-disable-line camelcase
-        unused: true,
-        warnings: false
-      }
-    })
-  );
+    config.plugins.push(
+        new WebpackMd5Hash(),
+        new ExtractTextPlugin('styles.[contenthash].css'),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor',
+            minChunks: Infinity
+        }),
+        new webpack.optimize.DedupePlugin(),
+        new webpack.optimize.UglifyJsPlugin({
+            mangle: true,
+            compress: {
+                dead_code: true, // eslint-disable-line camelcase
+                screw_ie8: true, // eslint-disable-line camelcase
+                unused: true,
+                warnings: false
+            }
+        })
+    );
 }
 
 
@@ -172,12 +174,12 @@ if (ENV_PRODUCTION) {
 //  TEST
 //-------------------------------------
 if (ENV_TEST) {
-  config.devtool = 'inline-source-map';
+    config.devtool = 'inline-source-map';
 
-  config.module = {
-    loaders: [
-      loaders.js,
-      loaders.scss
-    ]
-  };
+    config.module = {
+        loaders: [
+            loaders.js,
+            loaders.scss
+        ]
+    };
 }

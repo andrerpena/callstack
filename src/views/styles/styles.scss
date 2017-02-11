@@ -1,11 +1,20 @@
 @import "variables";
 @import "~bootstrap/scss/_variables.scss";
 @import "bootstrap-overrides";
-@import "~bootstrap/scss/bootstrap.scss";
+@import "~bootstrap/scss/bootstrap";
+
+
 
 .header.navbar {
     padding-left: 0;
     padding-right: 0;
+}
+
+.btn {
+    cursor: pointer;
+    .fa {
+        margin-right: 10px;
+    }
 }
 
 @media (max-width: 575px) {

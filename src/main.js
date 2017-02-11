@@ -8,7 +8,7 @@ import { initAuth } from './core/auth';
 import configureStore from './core/store';
 import Root from './views/root';
 import './views/styles/styles.scss';
-
+import '../node_modules/font-awesome/scss/font-awesome.scss';
 
 const store = configureStore();
 const syncedHistory = syncHistoryWithStore(browserHistory, store);
