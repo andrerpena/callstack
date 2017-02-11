@@ -5,7 +5,5 @@ import { Job } from './job';
 
 export const firebaseJobList = new FirebaseList({
   onAdd: jobActions.createJobSuccess,
-  onChange: jobActions.updateTaskSuccess,
-  onLoad: jobActions.loadTasksSuccess,
-  onRemove: jobActions.deleteJobSuccess
+  onLoad: jobActions.loadJobsSuccess
 }, Job);
