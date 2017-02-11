@@ -31,12 +31,20 @@ export class App extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div>
         <Header
           authenticated={this.props.auth.authenticated}
           signOut={this.props.signOut}
         />
-        <main className="main">{this.props.children}</main>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              <main className="main">
+                {this.props.children}
+              </main>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
@@ -49,7 +57,7 @@ export class App extends Component {
 
 const mapStateToProps = createSelector(
   getAuth,
-  auth => ({auth})
+  auth => ({ auth })
 );
 
 export default connect(

@@ -1,0 +1,13 @@
+.header.navbar {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+@media (max-width: 575px) {
+    .navbar-toggleable > .container {
+        /* If I don't do this, the brand and the toggle button will overlap*/
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+}

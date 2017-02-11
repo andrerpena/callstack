@@ -30,17 +30,19 @@ export default class Header extends Component {
 
     return (
       <header>
-        <Navbar light toggleable>
-          <NavbarToggler right onClick={this.toggle} />
-          <NavbarBrand href="/">Callstack</NavbarBrand>
-          <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              {signoutButton}
-              <NavItem>
-                <NavLink href="https://github.com/andrerpena/callstack">Github</NavLink>
-              </NavItem>
-            </Nav>
-          </Collapse>
+        <Navbar light toggleable full className="header">
+          <div className="container">
+            <NavbarToggler right onClick={this.toggle} />
+            <NavbarBrand href="/">Callstack</NavbarBrand>
+            <Collapse isOpen={this.state.isOpen} navbar>
+              <Nav className="ml-auto" navbar>
+                {signoutButton}
+                <NavItem>
+                  <NavLink href="https://github.com/andrerpena/callstack">Github</NavLink>
+                </NavItem>
+              </Nav>
+            </Collapse>
+          </div>
         </Navbar>
       </header>
     );
