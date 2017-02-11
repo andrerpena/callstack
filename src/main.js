@@ -16,20 +16,20 @@ const rootElement = document.getElementById('root');
 
 
 function render(Root) {
-  ReactDOM.render(
-    <AppContainer>
-      <Root history={syncedHistory} store={store} />
-    </AppContainer>,
-    rootElement
-  );
+    ReactDOM.render(
+        <AppContainer>
+            <Root history={syncedHistory} store={store} />
+        </AppContainer>,
+        rootElement
+    );
 }
 
 if (module.hot) {
-  module.hot.accept('./views/root', () => {
-    render(require('./views/root').default);
-  });
+    module.hot.accept('./views/root', () => {
+        render(require('./views/root').default);
+    });
 }
 
 initAuth(store.dispatch)
-  .then(() => render(Root))
-  .catch(error => console.error(error)); // eslint-disable-line no-console
+    .then(() => render(Root))
+    .catch(error => console.error(error)); // eslint-disable-line no-console

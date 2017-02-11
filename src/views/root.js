@@ -5,14 +5,14 @@ import { getRoutes } from './routes';
 
 
 export default function Root({history, store}) {
-  return (
-    <Provider store={store}>
-      <Router history={history} routes={getRoutes(store.getState)} />
-    </Provider>
-  );
+    return (
+        <Provider store={store}>
+            <Router history={history} routes={getRoutes(store.getState)} />
+        </Provider>
+    );
 }
 
 Root.propTypes = {
-  history: PropTypes.object.isRequired,
-  store: PropTypes.object.isRequired
+    history: PropTypes.object.isRequired,
+    store: PropTypes.object.isRequired
 };

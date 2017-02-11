@@ -26,7 +26,7 @@ app.use(express.static(STATIC_DIR));
 const router = new express.Router();
 
 router.get('*', (req, res) => {
-  res.sendFile(`${STATIC_DIR}/index.html`);
+    res.sendFile(`${STATIC_DIR}/index.html`);
 });
 
 app.use(router);
@@ -36,10 +36,10 @@ app.use(router);
 //  START SERVER
 //---------------------------------------------------------
 app.listen(PORT, HOST, error => {
-  if (error) {
-    logger.error(error);
-  }
-  else {
-    logger.info(`Server listening @ ${HOST}:${PORT}`);
-  }
+    if (error) {
+        logger.error(error);
+    }
+    else {
+        logger.info(`Server listening @ ${HOST}:${PORT}`);
+    }
 });

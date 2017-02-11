@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { InputGroup, InputGroupAddon, Button, InputGroupButton, Input } from 'reactstrap';
+import { InputGroup, Button, InputGroupButton, Input } from 'reactstrap';
 
 export default class JobSearch extends Component {
     render() {
         return (
             <div className="job-search-wrapper">
                 <div className="job-search">
-                    <InputGroup size="lg" inline>
+                    <InputGroup size="lg">
                         <Input placeholder="Your dev job search starts here..." />
                         <InputGroupButton>
                             <Button color="secondary">

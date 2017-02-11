@@ -2,19 +2,19 @@ import { createSelector } from 'reselect';
 
 
 export function getJobs(state) {
-  return state.jobs;
+    return state.jobs;
 }
 
 export function getJobList(state) {
-  return getJobs(state).list;
+    return getJobs(state).list;
 }
 
 export function getJobFilter(state) {
-  return getJobs(state).filter;
+    return getJobs(state).filter;
 }
 
 export function getDeletedJob(state) {
-  return getJobs(state).deleted;
+    return getJobs(state).deleted;
 }
 
 /**
@@ -24,8 +24,8 @@ export function getDeletedJob(state) {
  * @returns The filtered job list
  */
 function filterJobs(jobs, filter) {
-  let finalFilter = filter ? filter.trim().toLowerCase() : '';
-  return jobs.filter(job => job.title.toLowerCase().includes(finalFilter));
+    let finalFilter = filter ? filter.trim().toLowerCase() : '';
+    return jobs.filter(job => job.title.toLowerCase().includes(finalFilter));
 }
 
 //=====================================
@@ -36,8 +36,8 @@ export const getVisibleJobs = createSelector(
   getJobList,
   getJobFilter,
   (jobs, filter) => {
-    if (filter)
-      return filterJobs(jobs, filter);
-    return jobs;
+      if (filter)
+          return filterJobs(jobs, filter);
+      return jobs;
   }
 );

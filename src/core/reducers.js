@@ -4,7 +4,7 @@ import { authReducer } from './auth';
 import { jobsReducer } from './job';
 
 export default combineReducers({
-  auth: authReducer,
-  routing: routerReducer,
-  jobs: jobsReducer
+    auth: authReducer,
+    routing: routerReducer,
+    jobs: jobsReducer
 });

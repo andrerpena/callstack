@@ -9,14 +9,14 @@ export { getAuth, isAuthenticated } from './selectors';
 
 
 export function initAuth(dispatch) {
-  return new Promise((resolve, reject) => {
-    const unsub = firebaseAuth.onAuthStateChanged(
-      user => {
-        dispatch(authActions.initAuth(user));
-        unsub();
-        resolve();
-      },
-      error => reject(error)
-    );
-  });
+    return new Promise((resolve, reject) => {
+        const unsub = firebaseAuth.onAuthStateChanged(
+            user => {
+                dispatch(authActions.initAuth(user));
+                unsub();
+                resolve();
+            },
+            error => reject(error)
+        );
+    });
 }
