@@ -7,7 +7,6 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import { initAuth } from './core/auth';
 import configureStore from './core/store';
 import Root from './views/root';
-import '../node_modules/bootstrap/scss/bootstrap.scss';
 import './views/styles/styles.scss';
 
 

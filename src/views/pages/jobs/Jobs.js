@@ -2,6 +2,7 @@ import { List } from 'immutable';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
+import JobSearch from '../../components/job-search/JobSearch';
 
 import { getJobFilter, getVisibleJobs, jobsActions } from 'src/core/job';
 
@@ -34,9 +35,7 @@ export class Jobs extends Component {
 
   render() {
     return (
-      <div className="g-row">
-        Here I am
-      </div>
+      <JobSearch />
     );
   }
 }

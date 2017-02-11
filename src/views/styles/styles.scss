@@ -1,3 +1,8 @@
+@import "variables";
+@import "~bootstrap/scss/_variables.scss";
+@import "bootstrap-overrides";
+@import "~bootstrap/scss/bootstrap.scss";
+
 .header.navbar {
     padding-left: 0;
     padding-right: 0;

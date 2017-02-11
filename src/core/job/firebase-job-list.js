@@ -5,5 +5,6 @@ import { Job } from './job';
 
 export const firebaseJobList = new FirebaseList({
   onAdd: jobActions.createJobSuccess,
-  onLoad: jobActions.loadJobsSuccess
+  onLoad: jobActions.loadJobsSuccess,
+  path: '/jobs'
 }, Job);

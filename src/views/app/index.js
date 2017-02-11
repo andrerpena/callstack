@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import { authActions, getAuth } from 'src/core/auth';
 import { paths } from '../routes';
-import Header from '../components/header';
+import Header from '../components/header/Header';
 
 
 export class App extends Component {

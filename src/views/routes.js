@@ -1,7 +1,7 @@
 import { isAuthenticated } from 'src/core/auth';
 import App from './app';
 import SignIn from './pages/sign-in';
-import Jobs from './pages/jobs';
+import Jobs from './pages/jobs/Jobs';
 
 
 export const paths = {
