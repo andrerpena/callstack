@@ -40,7 +40,6 @@ rules:
   consistent-return: 0
   consistent-this: 0
   constructor-super: 2
-  curly: [2, "multi-line"]
   default-case: 2
   dot-location: [2, "property"]
   dot-notation: [2, {allowKeywords: true}]
@@ -225,8 +224,6 @@ rules:
   strict: 0
   template-curly-spacing: 0
   use-isnan: 2
-  valid-jsdoc: [2, {prefer: {return: "returns"}}]
-  valid-typeof: 2
   vars-on-top: 0
   wrap-iife: 2
   wrap-regex: 0
