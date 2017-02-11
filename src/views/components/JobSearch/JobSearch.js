@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { InputGroup, Button, InputGroupButton, Input } from 'reactstrap';
 
-export default class JobSearch extends Component {
+export class JobSearch extends Component {
     render() {
         return (
             <div className="job-search-wrapper">

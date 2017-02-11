@@ -2,9 +2,10 @@ import { List } from 'immutable';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
-import { JobSearch, JobList } from '../../components';
+import { JobList, JobSearch } from '../../components';
+import JobsLoading from './JobsLoading';
 
-import { getJobFilter, getVisibleJobs, jobsActions } from 'src/core/job';
+import { getJobFilter, getVisibleJobs, getJobsLoading, jobsActions } from 'src/core/job';
 
 
 export class Jobs extends Component {
@@ -13,6 +14,7 @@ export class Jobs extends Component {
         filterJobs: PropTypes.func.isRequired,
         filterType: PropTypes.string.isRequired,
         jobs: PropTypes.instanceOf(List).isRequired,
+        jobsLoading: PropTypes.bool.isRequired,
         loadJobs: PropTypes.func.isRequired,
         location: PropTypes.object.isRequired,
         unloadJobs: PropTypes.func.isRequired
@@ -34,11 +36,14 @@ export class Jobs extends Component {
     }
 
     render() {
-        let { jobs } = this.props;
+        let { jobs, jobsLoading } = this.props;
+        let jobsLoadingBox = jobsLoading ? <JobsLoading /> : null;
+        let jobList = jobs ? <JobList jobs={jobs} /> : null;
         return (
             <div>
                 <JobSearch />
-                <JobList jobs={jobs} />
+                {jobsLoadingBox}
+                {jobList}
             </div>
         );
     }
@@ -52,9 +57,11 @@ export class Jobs extends Component {
 const mapStateToProps = createSelector(
     getJobFilter,
     getVisibleJobs,
-    (filterType, jobs) => ({
+    getJobsLoading,
+    (filterType, jobs, jobsLoading) => ({
         filterType,
-        jobs
+        jobs,
+        jobsLoading
     })
 );
 

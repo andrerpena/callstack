@@ -9,6 +9,10 @@ export function getJobList(state) {
     return getJobs(state).list;
 }
 
+export function getJobsLoading(state) {
+    return getJobs(state).loading;
+}
+
 export function getJobFilter(state) {
     return getJobs(state).filter;
 }

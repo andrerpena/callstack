@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 
-export default class Header extends Component {
+export class Header extends Component {
     static propTypes = {
         authenticated: PropTypes.bool.isRequired,
         signOut: PropTypes.func.isRequired

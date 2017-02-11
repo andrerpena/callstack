@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import { List } from 'immutable';
 
-export default class JobSearch extends Component {
+export class JobList extends Component {
     static propTypes = {
         jobs: PropTypes.instanceOf(List).isRequired
     }

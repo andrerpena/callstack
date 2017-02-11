@@ -3,6 +3,7 @@ import {
     CREATE_JOB_ERROR,
     CREATE_JOB_SUCCESS,
     FILTER_JOBS,
+    LOAD_JOBS_START,
     LOAD_JOBS_SUCCESS,
     UNLOAD_JOBS_SUCCESS
 } from './action-types';
@@ -42,8 +43,16 @@ export function filterJobs(filterType) {
     };
 }
 
+export function loadJobsStart() {
+    return {
+        type: LOAD_JOBS_START,
+        payload: { }
+    };
+}
+
 export function loadJobs() {
     return dispatch => {
+        dispatch(loadJobsStart());
         // add getState to this function to get the current user
         // const { auth } = getState();
         // taskList.path = `jobs/${auth.id}`;
