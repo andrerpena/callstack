@@ -24,6 +24,7 @@ export function initAuth(user) {
 }
 
 export function signInError(error) {
+  console.log(error);
   return {
     type: SIGN_IN_ERROR,
     payload: error
@@ -44,11 +45,6 @@ export function signInWithGithub() {
 
 export function signInWithGoogle() {
   return authenticate(new firebase.auth.GoogleAuthProvider());
-}
-
-
-export function signInWithTwitter() {
-  return authenticate(new firebase.auth.TwitterAuthProvider());
 }
 
 export function signOut() {

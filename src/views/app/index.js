@@ -31,12 +31,11 @@ export class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <Header
           authenticated={this.props.auth.authenticated}
           signOut={this.props.signOut}
         />
-
         <main className="main">{this.props.children}</main>
       </div>
     );

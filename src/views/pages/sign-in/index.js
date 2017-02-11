@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { authActions } from 'src/core/auth';
 
 
-export function SignIn({signInWithGithub, signInWithGoogle, signInWithTwitter}) {
+export function SignIn({signInWithGithub, signInWithGoogle}) {
   return (
     <div className="g-row sign-in">
       <div className="g-col">
@@ -17,8 +17,7 @@ export function SignIn({signInWithGithub, signInWithGoogle, signInWithTwitter}) 
 
 SignIn.propTypes = {
   signInWithGithub: PropTypes.func.isRequired,
-  signInWithGoogle: PropTypes.func.isRequired,
-  signInWithTwitter: PropTypes.func.isRequired
+  signInWithGoogle: PropTypes.func.isRequired
 };
 
 
