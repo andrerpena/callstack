@@ -15,7 +15,7 @@ export const JobsState = new Record({
   list: new List()
 });
 
-export function tasksReducer(state = new JobsState(), {payload, type}) {
+export function jobsReducer(state = new JobsState(), {payload, type}) {
   switch (type) {
     case CREATE_JOB_SUCCESS:
       return state.merge({

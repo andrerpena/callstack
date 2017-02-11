@@ -1,7 +1,7 @@
 import { isAuthenticated } from 'src/core/auth';
 import App from './app';
 import SignIn from './pages/sign-in';
-import Tasks from './pages/tasks';
+import Jobs from './pages/jobs';
 
 
 export const paths = {
@@ -35,7 +35,7 @@ export const getRoutes = getState => {
     childRoutes: [
       {
         indexRoute: {
-          component: Tasks,
+          component: Jobs,
           onEnter: requireAuth(getState)
         }
       },

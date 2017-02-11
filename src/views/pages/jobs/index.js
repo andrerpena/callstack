@@ -3,24 +3,20 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 
-import { getNotification, notificationActions } from 'src/core/notification';
-import { getTaskFilter, getVisibleTasks, tasksActions } from 'src/core/tasks';
-import Notification from '../../components/notification';
+import { getJobFilter, getVisibleJobs, jobsActions } from 'src/core/job';
 import TaskFilters from '../../components/task-filters';
 import TaskForm from '../../components/task-form';
 import TaskList from '../../components/task-list';
 
 
-export class Tasks extends Component {
+export class Jobs extends Component {
   static propTypes = {
     createTask: PropTypes.func.isRequired,
     deleteTask: PropTypes.func.isRequired,
-    dismissNotification: PropTypes.func.isRequired,
     filterTasks: PropTypes.func.isRequired,
     filterType: PropTypes.string.isRequired,
     loadTasks: PropTypes.func.isRequired,
     location: PropTypes.object.isRequired,
-    notification: PropTypes.object.isRequired,
     tasks: PropTypes.instanceOf(List).isRequired,
     undeleteTask: PropTypes.func.isRequired,
     unloadTasks: PropTypes.func.isRequired,
@@ -42,19 +38,6 @@ export class Tasks extends Component {
     this.props.unloadTasks();
   }
 
-  renderNotification() {
-    const { notification } = this.props;
-    return (
-      <Notification
-        action={this.props.undeleteTask}
-        actionLabel={notification.actionLabel}
-        dismiss={this.props.dismissNotification}
-        display={notification.display}
-        message={notification.message}
-      />
-    );
-  }
-
   render() {
     return (
       <div className="g-row">
@@ -70,8 +53,6 @@ export class Tasks extends Component {
             updateTask={this.props.updateTask}
           />
         </div>
-
-        {this.props.notification.display ? this.renderNotification() : null}
       </div>
     );
   }
@@ -83,23 +64,20 @@ export class Tasks extends Component {
 //-------------------------------------
 
 const mapStateToProps = createSelector(
-  getNotification,
-  getTaskFilter,
-  getVisibleTasks,
-  (notification, filterType, tasks) => ({
-    notification,
+  getJobFilter,
+  getVisibleJobs,
+  (filterType, jobs) => ({
     filterType,
-    tasks
+    jobs
   })
 );
 
 const mapDispatchToProps = Object.assign(
   {},
-  tasksActions,
-  notificationActions
+  jobsActions
 );
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Tasks);
+)(Jobs);

@@ -1,8 +1,8 @@
-import * as tasksActions from './actions';
+import * as jobsActions from './actions';
 
 
-export { tasksActions };
+export { jobsActions };
 export * from './action-types';
-export { tasksReducer } from './reducer';
-export { getTaskFilter, getVisibleTasks } from './selectors';
-export { Task } from './task';
+export { jobsReducer } from './reducer';
+export { getJobFilter, getVisibleJobs } from './selectors';
+export { Job } from './job';
